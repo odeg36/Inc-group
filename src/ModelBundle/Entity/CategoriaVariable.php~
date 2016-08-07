@@ -1,0 +1,14 @@
+<?php
+
+namespace ModelBundle\Entity;
+
+/**
+ * CategoriaVariable
+ */
+class CategoriaVariable
+{
+    public function __toString(){
+        return $this->getNombre()?$this->getNombre():"";
+    }
+    
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="ModelBundle\Repository\ParticipanteVariableRepository" name="ModelBundle\Entity\ParticipanteVariable">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <many-to-one field="participante" target-entity="ModelBundle\Entity\Participante" inversed-by="variables">
+        <join-column name="participante_id" referenced-column-name="id" />
+    </many-to-one>
+    <many-to-one field="variable" target-entity="ModelBundle\Entity\Variable" inversed-by="participantes">
+        <join-column name="variable_id" referenced-column-name="id" />
+    </many-to-one>
+    <field name="mes" column="mes" type="integer" />
+    <field name="resultado" column="resultado" type="integer"/>
+    <field name="objetivo" column="objetivo" type="integer" />
+    <field name="porcentaje_cumplimiento" column="porcentaje_cumplimiento" type="integer" />
+  </entity>
+</doctrine-mapping>

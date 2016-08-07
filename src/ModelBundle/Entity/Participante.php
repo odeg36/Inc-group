@@ -141,4 +141,79 @@ class Participante
     {
         return $this->genero;
     }
+    /**
+     * @var string
+     */
+    private $identificador;
+
+
+    /**
+     * Set identificador
+     *
+     * @param string $identificador
+     *
+     * @return Participante
+     */
+    public function setIdentificador($identificador)
+    {
+        $this->identificador = $identificador;
+
+        return $this;
+    }
+
+    /**
+     * Get identificador
+     *
+     * @return string
+     */
+    public function getIdentificador()
+    {
+        return $this->identificador;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $variables;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->variables = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add variable
+     *
+     * @param \ModelBundle\Entity\ParticipanteVariable $variable
+     *
+     * @return Participante
+     */
+    public function addVariable(\ModelBundle\Entity\ParticipanteVariable $variable)
+    {
+        $this->variables[] = $variable;
+
+        return $this;
+    }
+
+    /**
+     * Remove variable
+     *
+     * @param \ModelBundle\Entity\ParticipanteVariable $variable
+     */
+    public function removeVariable(\ModelBundle\Entity\ParticipanteVariable $variable)
+    {
+        $this->variables->removeElement($variable);
+    }
+
+    /**
+     * Get variables
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVariables()
+    {
+        return $this->variables;
+    }
 }

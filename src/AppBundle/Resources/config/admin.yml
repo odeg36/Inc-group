@@ -1,11 +1,49 @@
 services:
-    app.admin.particpante:
+    app.admin.participante:
         class: AppBundle\Admin\ParticipanteAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Participante" }
         arguments:
             - ~
             - ModelBundle\Entity\Participante
-            - ~
+            - AppBundle:ParticipanteAdmin
         calls:
             - [ setTranslationDomain, [AppBundle]]
+
+    app.admin.variable:
+        class: AppBundle\Admin\VariableAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Variable" }
+        arguments:
+            - ~
+            - ModelBundle\Entity\Variable
+            - AppBundle:VariableAdmin
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    app.admin.participante_variable:
+        class: AppBundle\Admin\ParticipanteVariableAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Participante Variable" }
+        arguments:
+            - ~
+            - ModelBundle\Entity\ParticipanteVariable
+            - AppBundle:ParticipanteVariableAdmin
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    app.admin.categoria_variable:
+        class: AppBundle\Admin\CategoriaVariableAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Admin", label: "Categoria Variable" }
+        arguments:
+            - ~
+            - ModelBundle\Entity\CategoriaVariable
+            - AppBundle:CategoriaVariableAdmin
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    app.admin.subirCsv.form.type:
+         class: AppBundle\Form\Type\SubirCsvFormType
+         tags:
+             - { name: form.type, alias: subirCsv }

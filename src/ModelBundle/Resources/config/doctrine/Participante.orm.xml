@@ -4,9 +4,15 @@
     <id name="id" type="integer" column="id">
       <generator strategy="AUTO"/>
     </id>
+    <field name="identificador" column="identificador" type="string" length="255" />
     <field name="nombre" column="nombre" type="string" length="255" />
     <field name="cedula" column="cedula" type="string" length="255" />
     <field name="edad" column="edad" type="integer"/>
     <field name="genero" column="genero" type="string" length="50"/>
+    <one-to-many field="variables" target-entity="ModelBundle\Entity\ParticipanteVariable" mapped-by="participante" >
+      <cascade>
+                <cascade-all/>
+        </cascade>
+    </one-to-many>
   </entity>
 </doctrine-mapping>

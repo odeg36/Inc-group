@@ -37,10 +37,16 @@ file that was distributed with this source code.
                                                         {% for action in admin.dashboardActions %}
                                                             {% include action.template|default('SonataAdminBundle:CRUD:dashboard__action.html.twig') with {'action': action} %}
                                                         {% endfor %}
-                                                        {% if admin.classnameLabel == "Participante" %}
-                                                            <a class="btn btn-link btn-flat" href="{{ "/" }}">
-                                                                <i class="fa fa-add"></i>
+                                                        {% if admin.classnameLabel == "Participante" or admin.classnameLabel == "Variable"  %}
+                                                            <a class="btn btn-link btn-flat" href="{{ admin.generateUrl('subirCsv') }}">
+                                                                <i class="fa fa-upload"></i>
                                                                 Incluir CSV
+                                                            </a>
+                                                        {% endif %}
+                                                        {% if admin.classnameLabel == "ParticipanteVariable" %}
+                                                            <a class="btn btn-link btn-flat" href="{{ admin.generateUrl('reporteParticipantes') }}">
+                                                                <i class="fa fa-download"></i>
+                                                                Descargar Reporte
                                                             </a>
                                                         {% endif %}
                                                     </div>
